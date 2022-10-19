@@ -15,8 +15,10 @@ import './App.css';
 function CustomersModule() {
   return (
     <div>
+      <NavLinks></NavLinks>
       <CustomerList></CustomerList>
       <CustomerForm></CustomerForm>
+      <Footer></Footer>
     </div>
   );
 }
@@ -70,7 +72,7 @@ function compare(a, b) {
 
 function Custom(props) {
 
-  if (compare(props.login.loginstate, 'logged-in')) {
+  if (!compare(props.login.loginstate, 'logged-in')) {
     console.log("NOT loggedin");
     return (
       <Login></Login>
@@ -79,7 +81,7 @@ function Custom(props) {
     console.log("YES loggedin");
     return (
       <div>
-        <Route exact path="/" render={() => (<Redirect to="/login" />)} />
+        <Route exact path="/" render={() => (<Redirect to="/home" />)} />
         <Route path="/login" component={Login} />
         <Route path="/home" component={HomePage} />
         <Route path="/customers" component={CustomersModule} />
