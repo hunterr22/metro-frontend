@@ -13,7 +13,7 @@ class RestAPI {
 
   /* LOGIN REQUESTS */
   registerUser = (dispatch, username, password, email) => {
-    let url = "/api/register";
+    let url = "/account/register";
     let customer = {
       name: username,
       email: email,
@@ -56,7 +56,7 @@ class RestAPI {
   }
 
   callTokenService = (customer) => {
-    let url = "/api/token"
+    let url = "/account/token"
     let myHeaders = new Headers({ "Content-Type": "application/json" });
     let body = JSON.stringify(customer);
     console.log("BODY.CUSTOMER: " + JSON.stringify(customer));

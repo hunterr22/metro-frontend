@@ -79,7 +79,7 @@ function Custom(props) {
     console.log("YES loggedin");
     return (
       <div>
-        <Route exact path="/" render={() => (<Redirect to="/customers" />)} />
+        <Route exact path="/" render={() => (<Redirect to="/login" />)} />
         <Route path="/login" component={Login} />
         <Route path="/home" component={HomePage} />
         <Route path="/customers" component={CustomersModule} />
