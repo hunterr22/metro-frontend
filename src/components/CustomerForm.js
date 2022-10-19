@@ -32,17 +32,19 @@ const CustomerForm = ({ customer, usage, handleChange, handleCustomerEditClick,
           </tr>
           <tr>
             <td>Password:</td>
-            <td><input type={'text'} name={'password'} onChange={handleChange}
+            <td><input type={'password'} name={'password'} onChange={handleChange}
               placeholder={'password'}
               value={customer.password} disabled={usage === 'none' || usage === 'view'} /></td>
           </tr>
         </tbody></table>
-        <input type={'button'} value="Delete"
-          onClick={(e) => handleCustomerDeleteClick(e, customer)}
-          hidden={usage === 'none' || usage === 'view' || usage === 'add'} />
-        <input type={'button'} value="Save" onClick={(e) => handleCustomerSaveClick(e, customer, usage)} hidden={usage === 'none' || usage === 'view'} />
-        <input type={'button'} value="Cancel" onClick={(e) => handleEditCancelClick(e, customer, usage)} hidden={usage === 'none' || usage === 'view'} />
-        <input type={'button'} value="Edit" onClick={(e) => handleCustomerEditClick(e, customer)} hidden={usage === 'none' || usage === 'edit' || usage === 'add'} />
+        <div className='centered-div nav-link'>
+          <input type={'button'} value="Delete"
+            onClick={(e) => handleCustomerDeleteClick(e, customer)}
+            hidden={usage === 'none' || usage === 'view' || usage === 'add'} />
+          <input type={'button'} value="Save" onClick={(e) => handleCustomerSaveClick(e, customer, usage)} hidden={usage === 'none' || usage === 'view'} />
+          <input type={'button'} value="Cancel" onClick={(e) => handleEditCancelClick(e, customer, usage)} hidden={usage === 'none' || usage === 'view'} />
+          <input type={'button'} value="Edit" onClick={(e) => handleCustomerEditClick(e, customer)} hidden={usage === 'none' || usage === 'edit' || usage === 'add'} />
+        </div>
       </form>
     </div>
   </div>

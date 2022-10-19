@@ -37,3 +37,11 @@ ul {
   align-items: center;
   justify-content: center;
 }
+
+.nav-link {
+  margin-bottom: 10px;
+}
+
+.grid {
+  display: grid;
+}

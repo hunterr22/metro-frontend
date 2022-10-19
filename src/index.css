@@ -12,27 +12,29 @@ code {
     monospace;
 }
 
-nav{
+nav {
   padding: 5px;
 }
 
-nav a{
-  padding-left:5px;
-  padding-right:5px;
+nav a {
+  padding-left: 5px;
+  padding-right: 5px;
   text-decoration: none;
   margin-right: 3px;
 }
 
-nav a:hover{
+nav a:hover {
   text-decoration: none;
 }
 
-.footer{
-  display:block;
+.footer {
   padding: 5px;
-  height: 50px;
+  height: 150px;
+  display: block;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn{
+.btn {
   margin: 5px;
 }

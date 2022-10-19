@@ -56,7 +56,7 @@ function HomePage() {
 
 function NavLinks() {
   return (
-    <nav className='centered-div'>
+    <nav className='centered-div nav-link'>
       <Link type='button' className='button btn-primary btn-lg' to="/customers">Customers</Link>
       <Link type='button' className='button btn-primary btn-lg' to="/events">Events</Link>
       <Link type='button' className='button btn-primary btn-lg' to="/registrations">Registrations</Link>
@@ -115,7 +115,7 @@ function App({ login }) {
       <Center>
         <div className='App'>
 
-          <h1 className='centered-div'>Customer CRUD App</h1>
+          <h1 className='centered-div'>Event Registration App</h1>
           <br />
           <Custom login={login} />
 

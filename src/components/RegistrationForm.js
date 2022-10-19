@@ -11,40 +11,40 @@ import CustomerDropDown from './CustomerDropDown';
 
 const restapi = new RestAPI();
 
-function convertDate(date_number){
-  let date_string = new Date(date_number).toISOString().substring(0,10);
+function convertDate(date_number) {
+  let date_string = new Date(date_number).toISOString().substring(0, 10);
   return date_string;
 }
 
 const RegistrationForm = ({ registration, usage, handleChange, handleRegistrationEditClick,
-  handleEditCancelClick, handleRegistrationSaveClick, events, customers,  
+  handleEditCancelClick, handleRegistrationSaveClick, events, customers,
   handleRegistrationDeleteClick }) => {
   let rdate = convertDate(registration.registration_date);
   return (
-    <div id='registration-form'  className='card bg-light' hidden={ usage === 'none'} >
+    <div id='registration-form' className='card bg-light' hidden={usage === 'none'} >
       <div>
-        <h4 className='card-header'>Register for an Event</h4> 
+        <h4 className='card-header'>Register for an Event</h4>
         <form >
           <table className='table'><tbody>
             <tr>
               <td>Event:</td>
-                <td>
-                  <EventDropDown events={events} 
-                    selectedEventId={registration.event_id} 
-                    onSelectedEvent={handleChange}
-                    usage = {usage} 
-                  ></EventDropDown>
-                </td>
+              <td>
+                <EventDropDown events={events}
+                  selectedEventId={registration.event_id}
+                  onSelectedEvent={handleChange}
+                  usage={usage}
+                ></EventDropDown>
+              </td>
             </tr>
             <tr>
               <td>Customer:</td>
               <td>
-                  <CustomerDropDown customers={customers} 
-                    selectedCustomerId={registration.customer_id} 
-                    onSelectedCustomer={handleChange} 
-                    usage = {usage} 
-                  ></CustomerDropDown>
-              </td>              
+                <CustomerDropDown customers={customers}
+                  selectedCustomerId={registration.customer_id}
+                  onSelectedCustomer={handleChange}
+                  usage={usage}
+                ></CustomerDropDown>
+              </td>
             </tr>
             <tr>
               <td>RegistrationDate:</td>
@@ -59,12 +59,14 @@ const RegistrationForm = ({ registration, usage, handleChange, handleRegistratio
                 value={registration.notes} disabled={usage === 'none' || usage === 'view'} /></td>
             </tr>
           </tbody></table>
-          <input type={'button'} value="Delete"
-            onClick={(e) => handleRegistrationDeleteClick(e, registration)}
-            hidden={usage === 'none' || usage === 'view' || usage === 'add'} />
-          <input type={'button'} value="Save" onClick={(e) => handleRegistrationSaveClick(e, registration)} hidden={usage === 'none' || usage === 'view'} />
-          <input type={'button'} value="Cancel" onClick={(e) => handleEditCancelClick(e, registration)} hidden={usage === 'none' || usage === 'view'} />
-          <input type={'button'} value="Edit" onClick={(e) => handleRegistrationEditClick(e, registration)} hidden={usage === 'none' || usage === 'edit' || usage === 'add'} />
+          <div className='centered-div nav-link'>
+            <input type={'button'} value="Delete"
+              onClick={(e) => handleRegistrationDeleteClick(e, registration)}
+              hidden={usage === 'none' || usage === 'view' || usage === 'add'} />
+            <input type={'button'} value="Save" onClick={(e) => handleRegistrationSaveClick(e, registration)} hidden={usage === 'none' || usage === 'view'} />
+            <input type={'button'} value="Cancel" onClick={(e) => handleEditCancelClick(e, registration)} hidden={usage === 'none' || usage === 'view'} />
+            <input type={'button'} value="Edit" onClick={(e) => handleRegistrationEditClick(e, registration)} hidden={usage === 'none' || usage === 'edit' || usage === 'add'} />
+          </div>
         </form>
       </div>
     </div>
@@ -87,7 +89,7 @@ const mapStateToProps = (state) => {
     usage: state.formState.usage,
     appState: state.appState,
     customers: state.customers,
-    events: state.events    
+    events: state.events
   }
 }
 
@@ -96,9 +98,9 @@ const mapDispatchToProps = (dispatch) => {
     handleChange: (e) => {
       const field_name = e.currentTarget.name;
       let field_value = '';
-      if(field_name === 'registration_date'){
+      if (field_name === 'registration_date') {
         field_value = new Date(e.currentTarget.value).getTime();
-      }else{
+      } else {
         field_value = e.currentTarget.value;
       }
       dispatch(updateRegistrationFormObject(field_name, field_value));
@@ -112,8 +114,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(updateRegistrationFormUsage('view', registration));
     },
     handleRegistrationSaveClick: (e, registration, usage) => {
-      console.log("in RegistrationForm.handleRegistrationSaveClick: " 
-                    + JSON.stringify(registration));
+      console.log("in RegistrationForm.handleRegistrationSaveClick: "
+        + JSON.stringify(registration));
       dispatch(addRegistration(registration));
       if (usage === 'add') {
         dispatch(selectRegistration(registration));
