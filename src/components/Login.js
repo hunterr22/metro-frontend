@@ -8,7 +8,7 @@ const LoginForm = ({ username, password, email, loginstate, mode, handleChange, 
   return (
     <div id='login-form' className="card bg-light">
       <div>
-        <h4 className="card-header">Login Form</h4>
+        <h4 className="card-header centered-div">Login Form</h4>
         <form >
           <table className="table" ><tbody>
             <tr>
@@ -25,9 +25,16 @@ const LoginForm = ({ username, password, email, loginstate, mode, handleChange, 
             </tr>
             <tr>
               <td>Password:</td>
-              <td><input type={'password'} name={'password'} onChange={handleChange}
+              <td><input type={'password'} name={'password'} className="toggle" onChange={handleChange}
                 placeholder={'password'}
                 value={password} /></td>
+              <td>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="defaultCheck" value=""
+                    onChange={handleChange} />
+                  <label class="form-check-label" for="defaultCheck">Reveal password</label>
+                </div>
+              </td>
             </tr>
           </tbody></table>
           <div className='centered-div'>
@@ -63,6 +70,17 @@ const mapDispatchToProps = (dispatch) => {
     handleChange: (e) => {
       const field_name = e.currentTarget.name;
       const field_value = e.currentTarget.value;
+      const isChecked = e.target.checked || !e.target.checked;
+
+      console.log(field_value.getAttribute);
+
+      if (isChecked) {
+        if (document.querySelector(".toggle").getAttribute("type") === 'password') {
+          document.querySelector(".toggle").setAttribute("type", "text");
+        } else {
+          document.querySelector(".toggle").setAttribute("type", "password");
+        }
+      }
 
       dispatch(updateLoginFormObject(field_name, field_value));
     },
@@ -93,6 +111,7 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 }
+
 
 const VisibleLoginForm = connect(
   mapStateToProps,
