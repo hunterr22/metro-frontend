@@ -49,7 +49,7 @@ class RegistrationList extends React.Component {
 
     return (
       <div id='registration-list' className='card bg-light'  >
-        <h4 className='card-header' >Event Registrations</h4>
+        <h4 className='card-header centered-div' >Event Registrations</h4>
         <table className='table'><tbody>
           {this.props.registrations.map(registration => {
             let event_name = this.lookupEventTitle(+registration.event_id);

@@ -23,7 +23,7 @@ const RegistrationForm = ({ registration, usage, handleChange, handleRegistratio
   return (
     <div id='registration-form' className='card bg-light' hidden={usage === 'none'} >
       <div>
-        <h4 className='card-header'>Register for an Event</h4>
+        <h4 className='card-header centered-div'>Register for an Event</h4>
         <form >
           <table className='table'><tbody>
             <tr>

@@ -13,7 +13,7 @@ const EventForm = ({ event, usage, handleChange, handleEventEditClick,
   handleEventDeleteClick }) => (
   <div id='event-form' className="card bg-light" hidden={usage === 'none'}>
     <div>
-      <h4 className="card-header">Add or Modify an Event</h4>
+      <h4 className="card-header centered-div">Add or Modify an Event</h4>
       <form >
         <table className="table" ><tbody>
           <tr>
