@@ -29,6 +29,7 @@ node {
 	
 	  if(response=="Yes") {
 	    stage('Deploy to Kubenetes cluster - react client') {
+	      sh 'docker stop event-reactclient' 
 	      sh "kubectl create deployment event-reactclient --image=event-reactclient:v1.0"
 	      sh "kubectl expose deployment event-reactclient --type=LoadBalancer --port=80"
 	    }
